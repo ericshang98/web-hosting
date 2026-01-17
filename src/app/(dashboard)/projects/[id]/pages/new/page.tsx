@@ -120,7 +120,7 @@ export default function NewPagePage() {
                   onChange={(e) => setPath(e.target.value)}
                   placeholder="/intro"
                   required
-                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
               <p className="mt-1 text-sm text-gray-500">
@@ -139,7 +139,7 @@ export default function NewPagePage() {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Page Title"
                 required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
 
@@ -152,7 +152,7 @@ export default function NewPagePage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows={12}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono"
                 placeholder="<h1>Your content here</h1>&#10;<p>Supports HTML</p>"
               />
               <p className="mt-1 text-sm text-gray-500">
@@ -173,7 +173,7 @@ export default function NewPagePage() {
                     value={metaDescription}
                     onChange={(e) => setMetaDescription(e.target.value)}
                     rows={2}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Brief description for search engines"
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function NewPagePage() {
                     id="metaKeywords"
                     value={metaKeywords}
                     onChange={(e) => setMetaKeywords(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="keyword1, keyword2, keyword3"
                   />
                 </div>

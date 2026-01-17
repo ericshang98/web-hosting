@@ -190,7 +190,7 @@ export default function EditPagePage() {
                   value={path}
                   onChange={(e) => setPath(e.target.value)}
                   required
-                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function EditPagePage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
 
@@ -218,7 +218,7 @@ export default function EditPagePage() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows={16}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono"
               />
             </div>
 
@@ -235,7 +235,7 @@ export default function EditPagePage() {
                     value={metaDescription}
                     onChange={(e) => setMetaDescription(e.target.value)}
                     rows={2}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   />
                 </div>
 
@@ -248,7 +248,7 @@ export default function EditPagePage() {
                     id="metaKeywords"
                     value={metaKeywords}
                     onChange={(e) => setMetaKeywords(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   />
                 </div>
               </div>

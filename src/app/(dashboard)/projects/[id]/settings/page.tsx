@@ -128,7 +128,7 @@ export default function ProjectSettingsPage() {
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
                 required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
 
@@ -142,7 +142,7 @@ export default function ProjectSettingsPage() {
                 value={pathPrefix}
                 onChange={(e) => setPathPrefix(e.target.value)}
                 required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
               <p className="mt-1 text-sm text-gray-500">
                 Changing this will affect your proxy configuration
@@ -157,7 +157,7 @@ export default function ProjectSettingsPage() {
                 id="status"
                 value={status}
                 onChange={(e) => setStatus(e.target.value as ProjectStatus)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               >
                 <option value="pending">Pending</option>
                 <option value="active">Active</option>
