@@ -39,13 +39,17 @@ export default function SetupPage() {
   const getConfigCode = () => {
     if (!project) return ''
 
+    // Handle root path case: "/" should become "/:path*", not "//:path*"
+    const isRootPath = project.path_prefix === '/'
+    const sourcePrefix = isRootPath ? '' : project.path_prefix
+
     switch (platform) {
       case 'vercel':
         return `// vercel.json
 {
   "rewrites": [
     {
-      "source": "${project.path_prefix}/:path*",
+      "source": "${sourcePrefix}/:path*",
       "destination": "${proxyEndpoint}/:path*"
     }
   ]
@@ -54,14 +58,14 @@ export default function SetupPage() {
       case 'netlify':
         return `# netlify.toml
 [[redirects]]
-  from = "${project.path_prefix}/*"
+  from = "${sourcePrefix}/*"
   to = "${proxyEndpoint}/:splat"
   status = 200
   force = true`
 
       case 'nginx':
         return `# nginx.conf
-location ${project.path_prefix}/ {
+location ${project.path_prefix} {
     proxy_pass ${proxyEndpoint}/;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
@@ -74,7 +78,14 @@ location ${project.path_prefix}/ {
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-
+${isRootPath ? `
+    // Proxy all requests
+    const newUrl = '${proxyEndpoint}' + url.pathname;
+    return fetch(newUrl, {
+      method: request.method,
+      headers: request.headers,
+      body: request.body
+    });` : `
     if (url.pathname.startsWith('${project.path_prefix}')) {
       const newUrl = '${proxyEndpoint}' + url.pathname.slice('${project.path_prefix}'.length);
       return fetch(newUrl, {
@@ -85,7 +96,7 @@ export default {
     }
 
     // Handle other requests normally
-    return fetch(request);
+    return fetch(request);`}
   }
 }`
 
@@ -108,7 +119,9 @@ export default {
     setVerifyMessage('')
 
     try {
-      const verifyUrl = `https://${project.domain}${project.path_prefix}/__verify__`
+      // Handle root path case to avoid double slashes
+      const pathPrefix = project.path_prefix === '/' ? '' : project.path_prefix
+      const verifyUrl = `https://${project.domain}${pathPrefix}/__verify__`
       const response = await fetch(`/api/verify?url=${encodeURIComponent(verifyUrl)}`)
       const data = await response.json()
 
@@ -285,7 +298,7 @@ export default {
               <p>
                 <strong>Still having issues?</strong> Test manually by visiting{' '}
                 <code className="bg-gray-100 px-1 rounded">
-                  https://{project.domain}{project.path_prefix}/__verify__
+                  https://{project.domain}{project.path_prefix === '/' ? '' : project.path_prefix}/__verify__
                 </code>
               </p>
             </div>
