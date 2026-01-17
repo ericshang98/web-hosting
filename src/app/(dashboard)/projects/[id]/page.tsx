@@ -166,6 +166,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </h3>
               <div className="space-y-3">
                 <Link
+                  href={`/projects/${id}/analytics`}
+                  className="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                >
+                  View Analytics
+                </Link>
+                <Link
                   href={`/projects/${id}/setup`}
                   className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
                 >
