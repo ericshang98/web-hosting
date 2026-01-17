@@ -125,11 +125,20 @@ export default {
         setProject({ ...project, status: 'active' })
       } else {
         setVerifyResult('error')
-        setVerifyMessage(data.error || 'Verification failed. Please check your configuration.')
+        // Provide more helpful error messages
+        let errorMessage = data.error || 'Verification failed.'
+        if (errorMessage.includes('fetch failed') || errorMessage.includes('ENOTFOUND')) {
+          errorMessage = 'Unable to connect to your domain. Please check:\n1. Your domain is correctly configured\n2. The vercel.json/configuration has been deployed (run git push)\n3. Wait 1-2 minutes for Vercel to deploy, then try again'
+        } else if (errorMessage.includes('404')) {
+          errorMessage = 'The proxy endpoint returned 404. Please verify your rewrite rules are correct and deployed.'
+        } else if (errorMessage.includes('Invalid verification')) {
+          errorMessage = 'The endpoint responded but the project key does not match. Check your configuration.'
+        }
+        setVerifyMessage(errorMessage)
       }
     } catch {
       setVerifyResult('error')
-      setVerifyMessage('Could not reach verification endpoint. Make sure the configuration is deployed.')
+      setVerifyMessage('Network error. Please check your internet connection and try again.')
     }
 
     setVerifying(false)
@@ -230,10 +239,10 @@ export default {
                 className={`mb-4 px-4 py-3 rounded-md text-sm ${
                   verifyResult === 'success'
                     ? 'bg-green-50 border border-green-200 text-green-700'
-                    : 'bg-red-50 border border-red-200 text-red-700'
+                    : 'bg-amber-50 border border-amber-200 text-amber-800'
                 }`}
               >
-                {verifyMessage}
+                <div className="whitespace-pre-line">{verifyMessage}</div>
               </div>
             )}
 
